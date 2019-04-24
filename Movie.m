@@ -1,11 +1,12 @@
 %This code provides a way to see opinions changing in time. It displays the
-%continuous and discrete opinions of a randomly seeded initial condition
+%continuous and discrete opinions of individuals for a randomly seeded initial condition
 %opinion matrix over a specified time frame. NOTE: To be able to run this
 %code, you must add the code 'redblue.m' to the path. This code is
 %available from the same directory.
+
 clear
-n=10;
-m=10;
+n=10; %rows
+m=10; %columns
 
 for i=1:n
     for j=1:m
@@ -31,7 +32,7 @@ B(n+2,m+2,1)=A(n-1,m-1,1);
 
 for i=1:(n+2)
     for j=1:(m+2)
-        if B(i,j,1)>0.5 %R
+        if B(i,j,1)>0.5 %Republican
             C(i,j,1)=a;
         else
             C(i,j,1)=(-b);
@@ -67,6 +68,7 @@ for t=1:tend
     B(1,m+2,t+1)=A(2,m-1,t+1);
     B(n+2,1,t+1)=A(n-1,2,t+1);
     B(n+2,m+2,t+1)=A(n-1,m-1,t+1);
+    
     for i=1:(n+2)
         for j=1:(m+2)
             if B(i,j,t+1)>0.5
@@ -87,6 +89,10 @@ for j=1:tend
 end
 
 %% Movie time
+%in the left movie you see the continuous opinions of individuals changing
+%as update interactions occur. On the right movie you see the discrete
+%opinions of the neighbourhood - the way that a randomly selected
+%individual is defined to view their neighbours
 
 for t=1:tend
     lps=num2str(t);
@@ -101,5 +107,3 @@ for t=1:tend
     title(['Discrete Analysis ',lps]);
     M(t)=getframe;
 end
-
-

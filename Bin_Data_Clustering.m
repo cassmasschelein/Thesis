@@ -4,7 +4,7 @@
 
 clear
 trials=1000;
-counter=NaN(2,trials); %fix the thing that finds out when it converges
+counter=NaN(2,trials); %fix the check that finds out when it converges
 
 
 for z=1:trials
@@ -14,7 +14,7 @@ for z=1:trials
     for i=1:5
         for j=1:20
             if i<4 && i>1 && j<6 && j>1
-                A(i,j,1)=0.5+(rand/2);
+                A(i,j,1)=0.5+(rand/2); %define where we want our clusters to be
             elseif i<3 && j<14 && j>9
                 A(i,j,1)=0.5+(rand/2);
             elseif i>3 && j<19 && j>13
@@ -53,7 +53,7 @@ for z=1:trials
     
     for i=1:(n+2)
         for j=1:(m+2)
-            if B(i,j,1)>0.5 %R
+            if B(i,j,1)>0.5 %Republican
                 C(i,j,1)=a;
             else
                 C(i,j,1)=(-b);

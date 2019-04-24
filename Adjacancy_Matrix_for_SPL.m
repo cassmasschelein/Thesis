@@ -20,8 +20,9 @@ for i=1:N
     r=exprndBounded(alpha, sizeOut, r1, r2); %give radial value an exp distribution
     theta=2*pi*rand(1,1);
     zeta=(log(N)/3-1)*rand(1,1)+1; %individual curvature - effects how distance is measured
-    %zeta=1.5;
+    %zeta=1;
     epsilon=(1-0.75)*rand(1,1)+0.75; %how willing to make friends
+    %epsilon=1;
     nodes(1,i,1)=r;
     nodes(2,i,1)=theta;
     nodes(3,i,1)=zeta;
@@ -37,7 +38,8 @@ for j=1:t_end
 end
 
 
-%% this section determines the distance between nodes (directed)
+%% this section determines the distance between nodes (note that this distance is a quasidistance)
+
 distance=zeros(N,N);
 
 for i=1:N
@@ -50,7 +52,8 @@ for i=1:N
     distance(i,i)=0;
 end
 
-%% this section determines which nodes are friends -i.e. the edges of the graph
+%% this section determines which nodes are indeed friends -i.e. the edges of the graph
+
 request=distance;
 
 for i=1:N

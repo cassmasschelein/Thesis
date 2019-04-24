@@ -1,6 +1,7 @@
 %This code calculates the delta value for the four point condition for a
 %delta hyperbolic space. It takes the largest delta over 10,000 trials. The
 %output of this code is a delta value which prints in the command window.
+
 clear
 close all
 N=2500; %agents in the network
@@ -14,7 +15,7 @@ r2 = log(N); % upper bound
 for i=1:N
     r=exprndBounded(alpha, sizeOut, r1, r2); %give radial value an exp distribution
     theta=2*pi*rand(1,1);
-   zeta=(log(N)/3-1)*rand(1,1)+1; %individual curvature - effects how distance is measured
+    zeta=(log(N)/3-1)*rand(1,1)+1; %individual curvature - effects how distance is measured
     %zeta=1;
     epsilon=(1.75-0.75)*rand(1,1)+0.75; %how willing to make friends
     %epsilon=1;
@@ -25,7 +26,7 @@ for i=1:N
 end
 
 
-distance=zeros(N,N);
+distance=zeros(N,N); %recall that this is actually a quasidistance
 
 for i=1:N
     for j=1:N
@@ -36,7 +37,7 @@ end
 for i=1:N
     distance(i,i)=0;
 end
-trials=10;
+trials=10000;
 w=zeros(1,trials);
 x=zeros(1,trials);
 y=zeros(1,trials);
@@ -54,6 +55,7 @@ for k=1:trials
 end
 
 delta
+
 %%
 function r = exprndBounded(alpha, sizeOut, r1, r2)
 

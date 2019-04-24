@@ -4,7 +4,7 @@
 
 clear
 trials=1000;
-counter=NaN(2,trials); %fix the thing that finds out when it converges
+counter=NaN(2,trials); %fix the check that finds out when it converges
 
 
 for z=1:trials
@@ -35,7 +35,7 @@ for z=1:trials
     
     for i=1:(n+2)
         for j=1:(m+2)
-            if B(i,j,1)>0.5 %R
+            if B(i,j,1)>0.5 %Republican
                 C(i,j,1)=a;
             else
                 C(i,j,1)=(-b);

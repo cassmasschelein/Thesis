@@ -5,7 +5,7 @@
 
 clear
 trials=1000;
-counter=NaN(2,trials); %fix the thing that finds out when it converges
+counter=NaN(2,trials); %fix the check that finds out when it converges
 
 
 for z=1:trials
@@ -18,13 +18,13 @@ for z=1:trials
     
     for i=1:100
         if R(i)>D(i)
-            V(i)=R(i);
+            V(i)=R(i); %format the North Carolina data
         elseif D(i)>R(i)
             V(i)=1-D(i);
         end
     end
     
-    A0=zeros(5,20);
+    A0=zeros(5,20); %format the North Carolina data
     A0(1,1:20)=V(1:20);
     A0(2,1:20)=V(21:40);
     A0(3,1:20)=V(41:60);
@@ -49,7 +49,7 @@ for z=1:trials
     
     for i=1:(n+2)
         for j=1:(m+2)
-            if B(i,j,1)>0.5 %R
+            if B(i,j,1)>0.5 %Republican
                 C(i,j,1)=a;
             else
                 C(i,j,1)=(-b);
